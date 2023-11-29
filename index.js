@@ -15,7 +15,7 @@ addEventListener('resize',()=>{
 function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    car.update();
+    car.update(road.borders);
 
     ctx.save();
     ctx.translate(0,-car.y+canvas.height*0.7);
