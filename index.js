@@ -1,8 +1,14 @@
 const canvas = document.getElementById('canvas');
-canvas.width = 200;
+canvas.width = 300;
 canvas.height = window.innerHeight;
 
 const ctx = canvas.getContext('2d');
+
+const network_canvas = document.getElementById('networkCanvas');
+network_canvas.width = 300;
+network_canvas.height = window.innerHeight;
+
+const network_ctx = network_canvas.getContext('2d');
 
 const road = new Road(canvas.width/2,canvas.width*0.9);
 const car = new Car(road.getLaneCenter(0),400,30,50, 'AI');
@@ -12,11 +18,13 @@ const traffic = [
 ]
 
 addEventListener('resize',()=>{
-    canvas.width = 200;
+    canvas.width = 300;
     canvas.height = window.innerHeight;
+    network_canvas.width = 300;
+    network_canvas.height = window.innerHeight;
 })
 
-function animate() {
+function animate(time) {
     requestAnimationFrame(animate);
     ctx.clearRect(0,0,canvas.width,canvas.height);
     for (let i = 0; i < traffic.length; i++) {
@@ -32,6 +40,9 @@ function animate() {
         traffic[i].draw(ctx, "red");
     }
     ctx.restore();
+
+    network_ctx.lineDashOffset = -time/50;
+    Visualizer.drawNetwork(network_ctx, car.brain);
 }
 
-animate()
+animate(  );
