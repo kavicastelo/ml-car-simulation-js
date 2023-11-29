@@ -2,7 +2,7 @@ class Sensor{
     constructor(car){
         this.rayCount=5;
         this.rayLength=150;
-        this.raySpread=Math.PI/4;
+        this.raySpread=Math.PI/2;
 
         this.rays=[];
         this.readings=[];
@@ -97,16 +97,16 @@ class Sensor{
             );
             ctx.stroke();
 
-            ctx.strokeStyle="black";
-            ctx.moveTo(
-               this.rays[i][1].x,
-               this.rays[i][1].y
-            );
-            ctx.lineTo(
-               end.x,
-               end.y
-            );
-            ctx.stroke();
+            // ctx.strokeStyle="black";
+            // ctx.moveTo(
+            //    this.rays[i][1].x,
+            //    this.rays[i][1].y
+            // );
+            // ctx.lineTo(
+            //    end.x,
+            //    end.y
+            // );
+            // ctx.stroke();
         }
     }
 }
